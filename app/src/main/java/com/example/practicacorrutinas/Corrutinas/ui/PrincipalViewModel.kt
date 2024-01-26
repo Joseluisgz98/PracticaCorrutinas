@@ -17,13 +17,13 @@ class PrincipalViewModel {
                 color= Color.Red
         }
     }
-    fun llamarApi():Int{
+    fun llamarApi(){
         contador++
         Thread.sleep(5000)
-        return contador
+
     }
     fun textofun():String{
-        if (contador==1){
+        if (contador>=1){
         texto="Respuesta de la api"+contador
         return texto
         }
