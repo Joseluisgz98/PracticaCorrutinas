@@ -11,7 +11,11 @@ class PrincipalViewModel {
     var contador by mutableStateOf(0)
 
     fun cambioColor(){
-        color = if (color == Color.Red) Color.Blue else Color.Red
+        if (color== Color.Red){
+                color= Color.Blue
+            }else{
+                color= Color.Red
+        }
     }
     fun llamarApi():Int{
         contador++
