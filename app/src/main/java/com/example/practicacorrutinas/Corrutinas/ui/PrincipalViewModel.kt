@@ -15,6 +15,7 @@ class PrincipalViewModel :ViewModel(){
     var texto by mutableStateOf("")
     var color by mutableStateOf(Color.Red)
     var contador by mutableStateOf(0)
+    var boleano by mutableStateOf(false)
 
     fun cambioColor(){
         if (color== Color.Red){
@@ -24,14 +25,25 @@ class PrincipalViewModel :ViewModel(){
         }
     }
     fun fetchData() {
-        contador = contador.plus(1)
         //Nos permite crear una corrutina desde un ViewModel
         viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) {
-                delay(5000)
-                "Respuesta de la API ($contador)"
+            try {
+                boleano = true
+                llamarApi()
+            } catch (e: Exception) {
+                println("Error ${e.message}")
+            } finally {
+                boleano = false
             }
-            texto = result
         }
+    }
+    //Solo funcionan dentro de una corrutina u otra función suspendida
+    private suspend fun llamarApi() {
+        contador = contador.plus(1)
+        val result = withContext(Dispatchers.IO) {
+            delay(5000)
+            "Respuesta de la API $contador"
+        }
+        texto = result
     }
 }
