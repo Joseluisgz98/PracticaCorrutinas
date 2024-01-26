@@ -26,6 +26,7 @@ fun Pantalla(viewModel: PrincipalViewModel){
                 Text("Cambiar color")
             }
             Text(viewModel.textofun())
+
             Button(onClick = {viewModel.llamarApi()}) {
                 Text("Llamar API")
             }
