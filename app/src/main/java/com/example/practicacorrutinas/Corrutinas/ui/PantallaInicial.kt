@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 
 
 @Composable
-fun Pantalla(viewModel: PrincipalViewModel){
+    fun Pantalla(viewModel: PrincipalViewModel){
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
