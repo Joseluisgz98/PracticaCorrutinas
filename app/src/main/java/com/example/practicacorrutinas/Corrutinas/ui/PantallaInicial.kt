@@ -6,10 +6,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+
 
 
 @Composable
@@ -25,7 +27,10 @@ import androidx.compose.ui.Modifier
             ) {
                 Text("Cambiar color")
             }
-            Text(viewModel.texto)
+            if (viewModel.boleano==true){
+                CircularProgressIndicator()
+            }else{
+            Text(viewModel.texto)}
 
             Button(onClick = {viewModel.fetchData()}) {
                 Text("Llamar API")
