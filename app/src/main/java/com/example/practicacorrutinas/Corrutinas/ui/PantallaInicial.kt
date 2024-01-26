@@ -20,7 +20,7 @@ import androidx.compose.ui.Modifier
     ){
         Column (horizontalAlignment = Alignment.CenterHorizontally){
             Button(
-                onClick = {viewModel.cambioColor()},
+                onClick = { viewModel.cambioColor()},
                 colors = ButtonDefaults.buttonColors(containerColor = viewModel.color),
             ) {
                 Text("Cambiar color")
