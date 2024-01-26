@@ -4,6 +4,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.withContext
 
 class PrincipalViewModel {
     var texto by mutableStateOf("")
@@ -17,16 +20,15 @@ class PrincipalViewModel {
                 color= Color.Red
         }
     }
-    fun llamarApi():Int{
-        contador++
-        Thread.sleep(5000)
-        return contador
-    }
-    fun textofun():String{
-        if (contador==1){
-        texto="Respuesta de la api"+contador
-        return texto
+    fun fetchData() {
+        contador = contador.plus(1)
+        //Nos permite crear una corrutina desde un ViewModel
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO) {
+                delay(5000)
+                "Respuesta de la API ($contador)"
+            }
+            texto = result
         }
-        return texto
     }
 }

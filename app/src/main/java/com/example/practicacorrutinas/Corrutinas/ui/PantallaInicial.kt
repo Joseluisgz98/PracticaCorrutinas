@@ -25,9 +25,9 @@ import androidx.compose.ui.Modifier
             ) {
                 Text("Cambiar color")
             }
-            Text(viewModel.textofun())
+            Text(viewModel.texto)
 
-            Button(onClick = {viewModel.llamarApi()}) {
+            Button(onClick = {viewModel.fetchData()}) {
                 Text("Llamar API")
             }
         }
